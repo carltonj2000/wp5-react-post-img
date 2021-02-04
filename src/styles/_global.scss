@@ -16,3 +16,12 @@ main {
 button {
   font-size: 1.5rem;
 }
+
+li {
+  list-style: none;
+  background-image: url("../images/logo.svg");
+  background-size: 10px;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  background-position-y: center;
+}

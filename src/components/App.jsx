@@ -2,6 +2,8 @@ import Recipes from "./Recipes";
 
 import "../styles/index.scss";
 
+import pic from "../images/IMG_0782.jpeg";
+
 const App = () => {
   return (
     <>
@@ -11,6 +13,7 @@ const App = () => {
           <h1>React</h1>
         </section>
         <Recipes />
+        <img src={pic} alt="green sand" width="250px" />
       </main>
     </>
   );

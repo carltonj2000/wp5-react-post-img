@@ -14,8 +14,27 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/resource",
+        //type: "asset", // now inline or output based on size
+        /* // for max size of image to inline or not
+        parser: {
+          dataUrlCondition: {
+            maxSize: 30 * 1024,
+          }
+        }
+        */
+      },
+      {
+        test: /\.(svg)$/i,
+        type: "asset/inline",
+      },
+      {
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: "" },
+          },
           "css-loader",
           "postcss-loader",
           "sass-loader",
@@ -32,5 +51,8 @@ module.exports = {
   plugins: [new MiniCssExtractPlugin()],
   resolve: {
     extensions: [".js", ".jsx"],
+  },
+  output: {
+    assetModuleFilename: "images/[hash][ext]",
   },
 };
