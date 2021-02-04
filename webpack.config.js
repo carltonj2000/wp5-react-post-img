@@ -24,10 +24,13 @@ module.exports = {
       },
       {
         use: { loader: "babel-loader" },
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
       },
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
 };
