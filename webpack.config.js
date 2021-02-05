@@ -15,7 +15,7 @@ const plugins = [
     favicon: "./src/images/favicon.ico",
   }),
 ];
-if (!prod) plugins.push(new ReactRefreshWebpackPlugin());
+if (process.env.SERVE) plugins.push(new ReactRefreshWebpackPlugin());
 
 module.exports = {
   mode: prod ? "production" : "development",
