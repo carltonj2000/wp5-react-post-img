@@ -11,8 +11,6 @@ const elvenGauntletsRecipe = {
   leather: 1,
   refinedMoonstone: 3,
 };
-console.log(elvenShieldRecipe);
-console.log(elvenGauntletsRecipe);
 
 const Recipes = () => {
   const [recipe, recipeSet] = useState({});
