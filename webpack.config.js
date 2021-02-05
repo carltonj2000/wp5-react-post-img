@@ -2,12 +2,20 @@ const path = require("path");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const {
-  cleanWebpackPlugin,
-  CleanWebpackPlugin,
-} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const prod = process.env.NODE_ENV && process.env.NODE_ENV === "production";
+
+const plugins = [
+  new CleanWebpackPlugin(),
+  new MiniCssExtractPlugin(),
+  new HtmlWebpackPlugin({
+    template: "./src/index.html",
+    favicon: "./src/images/favicon.ico",
+  }),
+];
+if (!prod) plugins.push(new ReactRefreshWebpackPlugin());
 
 module.exports = {
   mode: prod ? "production" : "development",
@@ -54,14 +62,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      favicon: "./src/images/favicon.ico",
-    }),
-  ],
+  plugins,
   resolve: {
     extensions: [".js", ".jsx"],
   },
@@ -69,4 +70,5 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "images/[hash][ext]",
   },
+  entry: "./src/index.js",
 };
